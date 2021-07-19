@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Movies = () =>{ 
     const[userData,setUserData]=useState();
    useEffect(() => {
-    console.log("im in componentDidMount");
+    console.log("im in componentDidMount !");
     getUserData();
    }, [])
 
