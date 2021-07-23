@@ -1,68 +1,35 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Card from '../../common/card/Card';
 
 const Movies = () => {
-    const [userData, setUserData] = useState();
-    const[name, setName]=useState();
-    const[job, setJob]=useState();
+    const[moviedData,setMoviesData]=useState();
+    useEffect( () => {
+        getMoviesTitle();
+    })
 
-    useEffect(() => {
-        console.log("im in componentDidMount !");
-        getUserData();
-    }, [])
+    const getMoviesTitle = () => {
+        axios.get("https://imdb8.p.rapidapi.com/title/get-popular-movies-by-genre",{
+           headers:{"x-rapidapi-key": "fead5a4f9emshc048677dca48d40p144198jsn12ee6ccd1dd3",
+           "x-rapidapi-host": "imdb8.p.rapidapi.com",
+           "useQueryString": true},
+           params:{"genre": "/chart/popular/genre/adventure"}
 
-    const getUserData = () => {
-        const xhrUserData = new XMLHttpRequest();
-        //different methods of API,POSt
-        console.log("opening the data")
-        xhrUserData.open("GET", "https://reqres.in/api/users?page=2")
-        console.log(" make  api call")
-        xhrUserData.send();
-        //readystateChange
-        console.log(xhrUserData)
-        xhrUserData.addEventListener("readystatechange", function () {
-
-            console.log("Ready State Change", this.readyState)
-            if (this.readyState === 4) {
-                console.log("Status", this.status)
-                console.log(typeof this.responseText)
-                //   console.log(this.responseText)
-                console.log(typeof JSON.parse(this.responseText))
-                // console.log(JSON.parse(this.responseText))
-                const users = JSON.parse(this.responseText);
-                setUserData(users)
-            }
-
-
-        })
+        } )
+        .then((response) =>{setMoviesData(response.data)})
+        .fetch( (error) => console.log(error))
     }
-     
-      const nameChangeHandler = (event) => setName.event.target.value ;
-      const jobChangeHandler = (event) => setJob.event.target.value;
-      const createUserClickHandler = () => {
-          const xhrCreateUser = new XMLHttpRequest();
-          const postObject ={
-              name:name,
-              job:job
-          }
-          xhrCreateUser.open('post',"https://reqres.in/api/users?page")
-          xhrCreateUser.send(JSON.stringify(postObject));
-        }
-
     return (
-
         <div className="movies">
-            here goes all movies
-            <p>{JSON.stringify(userData)}</p>
-          <label>Name</label>
-            <input type="text" value={name} onChange={nameChangeHandler}/>
-            <label>job</label>
-            <input type="text" value={job} onChange={jobChangeHandler} />
-            <button onClick={createUserClickHandler}>create user</button>
+
+            {Array(20).fill().map((item,index) => {
+                <Card imageUrl="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" title={moviedData[index]} year="2010" rating="121"/>
+            })}
+           
+           
         </div>
-    );
+    )
 }
 
-
 export default Movies;
+

@@ -3,7 +3,7 @@ import React from 'react'
 const Series = () => {
     return (
         <div>
-            series here
+            this is series page
         </div>
     )
 }

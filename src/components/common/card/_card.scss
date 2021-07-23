@@ -1,0 +1,37 @@
+.card{
+     display: flex;
+     flex-direction: column;
+        width: 200px;
+    .image-container{
+        border-radius: 8px;
+        overflow: hidden;
+        max-height: 300px;
+        width:max-content;
+    }
+    img{
+        max-height: 300px;
+    }
+    .year-rating-container{
+        display: flex;
+       align-items: center;
+        justify-content: space-between;
+          color: $gray3;
+    }
+    h4{
+      margin: 4px 0px;
+        color: $gray;
+    }
+    p{
+       margin: 4px 0px;
+       font-size: 14px;
+       font-weight:600;
+       display: flex;
+       align-items: center;
+    }
+    svg{
+        height: 18px;
+        width: 18px;
+        color: $accent;
+        margin-right: 4px;
+    }
+}

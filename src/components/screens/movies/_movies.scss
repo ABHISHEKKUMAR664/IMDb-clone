@@ -1,0 +1,13 @@
+.movies{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px;
+    overflow-y: scroll;
+    max-height: 100vh;
+    .card{
+        display: flex;
+        align-items: center;
+        margin:24px;
+         
+    }
+}
