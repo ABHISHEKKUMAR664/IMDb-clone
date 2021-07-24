@@ -1,9 +1,12 @@
 
 
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import {AiFillStar} from 'react-icons/ai';
 
 const Card = ({imageUrl,title,year,rating}) => {
+   
+
     return (
         <div className="card">
             <div className="image-container">
