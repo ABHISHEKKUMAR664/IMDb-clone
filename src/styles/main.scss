@@ -1,13 +1,15 @@
-//default
 @import './theme';
+@import '../styles/defaults';
+
+
+
+
+@import '../series/series';
+@import '../component/common/header/header';
+
 @import './typography';
-@import './default';
-
-
-//component
-@import '../components/common/header/header';
-@import '../components/common/card/card';
-
-
-//screen
-@import '../components/screens/movies/movies';
+@import '../component/common/card/card';
+@import '../screens/movies/movies';
+@import '../screens/detailsScreen/details';
+@import '../component/common/labelValue/labelValue';
+@import '../component/common/rating/rating';

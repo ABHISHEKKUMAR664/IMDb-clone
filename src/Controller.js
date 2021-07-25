@@ -1,23 +1,31 @@
-import { BrowserRouter as Router,Route,Switch } from "react-router-dom";
-import Header from "./components/common/header/Header";
-import Anime from "./components/screens/anime/Anime";
-import Movies from "./components/screens/movies/Movies";
-import Series from "./components/screens/series/Series";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Movies from './screens/movies/Movies';
+import Series from './series/Series';
+import Header from './component/common/header/Header';
+import Details from './screens/detailsScreen/Details';
+import Anime from './anime/Anime';
 
-const Controller = () =>{
+
+
+
+const Controller=()=>{
     return(
-         
-             
-            <Router>
-                <Header/>
-                <Switch>
-                   
-                    <Route exact path="/" render={() => <Movies/>} />
-                     <Route path="/series" render={() => <Series/>} />
-                     <Route path="/anime" render={ () => <Anime/>} />
-                </Switch>
-            </Router>
-           
+        <>
+        
+        
+        <Router>
+         <Header/>
+            <Switch>
+                <Route exact path="/" render={()=><Movies/>}/>
+                <Route exact path="/anime" render={()=><Anime/> }/>
+                <Route exact path="/series" render={()=><Series/>}/>
+                <Route exact path="/movies/:movieId" render={()=><Details/>}/>
+            </Switch>
+
+        </Router>
+        </>
     )
 }
+
 export default Controller;
